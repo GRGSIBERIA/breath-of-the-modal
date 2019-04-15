@@ -12,9 +12,15 @@ public class SphericalCoordinateSystemObject : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        
 	}
+
+    private void OnRenderObject()
+    {
+        DrawLines();
+    }
 
     void CreateLineMaterial()
     {
@@ -30,7 +36,7 @@ public class SphericalCoordinateSystemObject : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void DrawLines()
     {
         CreateLineMaterial();
         lineMaterial.SetPass(0);
@@ -74,5 +80,10 @@ public class SphericalCoordinateSystemObject : MonoBehaviour
 
         GL.End();
         GL.PopMatrix();
+    }
+
+    private void OnDrawGizmos()
+    {
+        DrawLines();
     }
 }
