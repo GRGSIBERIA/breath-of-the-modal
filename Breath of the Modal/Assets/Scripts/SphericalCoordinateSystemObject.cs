@@ -22,25 +22,12 @@ public class SphericalCoordinateSystemObject : MonoBehaviour
         DrawLines();
     }
 
-    void CreateLineMaterial()
-    {
-        if (!lineMaterial)
-        {
-            Shader shader = Shader.Find("Hidden/Internal-Colored");
-            lineMaterial = new Material(shader);
-            lineMaterial.hideFlags = HideFlags.HideAndDontSave;
-            lineMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            lineMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            lineMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
-            lineMaterial.SetInt("_ZWrite", 0);
-        }
-    }
-
     private void DrawLines()
     {
-        CreateLineMaterial();
-        lineMaterial.SetPass(0);
+        if (lineMaterial == null)
+            lineMaterial = LineMaterialScript.CreateLineMaterial();
 
+        lineMaterial.SetPass(0);
         GL.PushMatrix();
         GL.Begin(GL.LINES);
 
