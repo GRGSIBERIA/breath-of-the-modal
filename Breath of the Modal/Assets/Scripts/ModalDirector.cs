@@ -53,7 +53,7 @@ public class ModalDirector : MonoBehaviour
 
     public static Quaternion ModalRotation(int nowModal)
     {
-        const float unitModal = 90f / 128f;
+        const float unitModal = 90f / (12f * 4f * 3f);
         const float unitAngle = 360f / 48f;
         return Quaternion.Euler(0f, unitAngle * nowModal, unitModal * nowModal);
         //return Quaternion.Euler(0f, 30f * nowModal, 7.5f * nowModal);
@@ -64,5 +64,10 @@ public class ModalDirector : MonoBehaviour
         transform.rotation = ModalRotation(nowModal);
 
         DrawLines();
+    }
+
+    public void SetModal(int nowModal)
+    {
+        this.nowModal = nowModal;
     }
 }
