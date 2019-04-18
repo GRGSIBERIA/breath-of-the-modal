@@ -347,6 +347,11 @@ Prefab:
       propertyPath: code
       value: 108
       objectReference: {fileID: 0}
+    - target: {fileID: 114249997973638098, guid: fd30d4fa4829ae14bad86bab5e0e9a97,
+        type: 2}
+      propertyPath: buttonNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd30d4fa4829ae14bad86bab5e0e9a97, type: 2}
   m_IsPrefabAsset: 0
@@ -500,6 +505,11 @@ Prefab:
       propertyPath: code
       value: 107
       objectReference: {fileID: 0}
+    - target: {fileID: 114249997973638098, guid: fd30d4fa4829ae14bad86bab5e0e9a97,
+        type: 2}
+      propertyPath: buttonNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd30d4fa4829ae14bad86bab5e0e9a97, type: 2}
   m_IsPrefabAsset: 0
@@ -608,6 +618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983949914}
+  - component: {fileID: 1983949915}
   m_Layer: 0
   m_Name: ScaleModule
   m_TagString: Untagged
@@ -631,3 +642,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983949915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1983949913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa78d997e2f134f4db85231ab94834e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
