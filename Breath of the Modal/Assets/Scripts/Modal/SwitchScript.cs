@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleScript : SwitchScript {
+public class SwitchScript : MonoBehaviour
+{
+    public int buttonNumber;
+
+    protected bool isON;
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +17,9 @@ public class ToggleScript : SwitchScript {
 	void Update () {
 		
 	}
+
+    public bool IsON()
+    {
+        return isON;
+    }
 }

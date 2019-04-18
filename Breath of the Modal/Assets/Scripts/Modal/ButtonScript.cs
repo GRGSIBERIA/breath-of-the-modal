@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScript : MonoBehaviour {
+public class ButtonScript : SwitchScript {
 
     public Color defaultColor;
 
     public Color pushColor;
 
     public KeyCode code;
-
+    
     Material material;
 
 	// Use this for initialization
@@ -25,10 +25,12 @@ public class ButtonScript : MonoBehaviour {
 		if (Input.GetKey(code))
         {
             material.color = pushColor;
+            isON = true;
         }
         else
         {
             material.color = defaultColor;
+            isON = false;
         }
 	}
 }
