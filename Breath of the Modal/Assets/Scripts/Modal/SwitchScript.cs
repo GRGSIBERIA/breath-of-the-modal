@@ -6,17 +6,27 @@ public class SwitchScript : MonoBehaviour
 {
     public int buttonNumber;
 
+    public Color defaultColor;
+
+    public Color pushColor;
+
+    public KeyCode code;
+
     protected bool isON;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    protected Material material;
+
+    protected void SwitchStart ()
+    {
+        material = GetComponent<MeshRenderer>().materials[0];
+        material.color = defaultColor;
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        
+    }
 
     public bool IsON()
     {

@@ -41,4 +41,9 @@ public class SoundManager : MonoBehaviour
             if (phase > 2 * Mathf.PI) phase = 0;
         }
     }
+
+    void SetTone(int n)
+    {
+        frequency = 440.0 * Mathf.Pow(2.0f, (n - 69) / 12.0f);
+    }
 }

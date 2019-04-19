@@ -2,27 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScript : SwitchScript {
-
-    public Color defaultColor;
-
-    public Color pushColor;
-
-    public KeyCode code;
-    
-    Material material;
-
+public class ButtonScript : SwitchScript
+{
 	// Use this for initialization
 	void Start ()
     {
-        material = GetComponent<MeshRenderer>().materials[0];
-        material.color = defaultColor;
+        SwitchStart();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetKey(code))
+        if (Input.GetKey(code))
         {
             material.color = pushColor;
             isON = true;
@@ -32,5 +23,5 @@ public class ButtonScript : SwitchScript {
             material.color = defaultColor;
             isON = false;
         }
-	}
+    }
 }
