@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChordScript : MonoBehaviour {
+public class ChordScript
+{
+    public int Value { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public ChordScript(int register, KeyScript key)
+    {
+        Value = key.GetMajorMinor()[register];
+    }
 }

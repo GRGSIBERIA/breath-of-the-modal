@@ -6,7 +6,7 @@ public class ModuleManagerScript : MonoBehaviour {
 
     SwitchScript[] switches;
 
-    int register;
+    public int Register { get; private set; }
 
 	// Use this for initialization
 	void Start ()
@@ -22,12 +22,12 @@ public class ModuleManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        register = 0;
+        Register = 0;
 		for (int i = 0; i < switches.Length; ++i)
         {
             if (switches[i].IsON())
-                register |= 1 << i;
+                Register |= 1 << i;
         }
-        Debug.Log(transform.name + ": " + register.ToString());
+        Debug.Log(transform.name + ": " + Register.ToString());
 	}
 }

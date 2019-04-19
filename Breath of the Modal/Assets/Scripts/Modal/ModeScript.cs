@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModeScript : MonoBehaviour {
+public class ModeScript
+{
+    public int Register { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public ModeScript(int register, KeyScript key)
+    {
+        Register = key.GetMajorMinor()[register];
+    }
 }
