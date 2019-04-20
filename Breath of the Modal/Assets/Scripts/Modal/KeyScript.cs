@@ -16,16 +16,14 @@ public class KeyScript
 
     public KeyScript(int register, int isTonic, int isRelative)
     {
-        register %= 12;
+        register %= 12;     // 先に割っておかないと後悔する
 
         this.isTonic = isTonic;
         this.isRelative = isRelative;
-        Keys = new int[7];
+        Keys = isTonic > 0 ? MinorKeys : MajorKeys;
 
         for (int i = 0; i < MajorKeys.Length; ++i)
         {
-            Keys[i] = isTonic > 0 ? MinorKeys[i] : MajorKeys[i];
-
             if (isRelative > 0)
                 Keys[i] += 9;
 

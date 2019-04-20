@@ -47,8 +47,10 @@ public class ModuleIntegrationManager : MonoBehaviour {
          * * scale
          * 各クラスのValueを参照して足し合わせた音を演奏する
          */
+        int isTonic = (modulationManager.Register & 1) > 0 ? 1 : 0;
+        int isRelative = (modulationManager.Register & 2) > 0 ? 1 : 0;
 
-        KeyScript key = new KeyScript(keyManager.Register, (modulationManager.Register & 1) > 0 ? 1 : 0, (modulationManager.Register & 2) > 0 ? 1 : 0);
-        ChordScript chord = new ChordScript(chordManager.Register, key);
+        KeyScript key = new KeyScript(keyManager.Register, isTonic, isRelative);
+        
 	}
 }
