@@ -33,27 +33,32 @@ basicKey = copy(minorKey) if isTonic > 0 else copy(majorKey)
 
 # ここでキーを作る
 addNum = 9 if isRelative > 0 else 0
-key = [(x + addNum + basicKey[keyRegister]) % 12 for x in basicKey]
+key = [(x + addNum + keyRegister) % 12 for x in basicKey]
 keyC = cycle(key)
 
 print("key:     ",key)
 
-chordRegister = 2
+chordRegister = 1
 for _ in range(chordRegister):
     keyC.next()
 keyC.previous()
 
+#chord = [(x + key[chordRegister]) % 12 for x in basicKey]
 chord = [keyC.next() for _ in range(7)]
 
 print("chord:   ",chord)
 
-modeRegister = 1
 
-keyC.reset()
-for _ in range(modeRegister):
-    keyC.next()
-keyC.previous()
 
-mode = [keyC.next() for _ in range(7)]
+# モードが直感に反してるので修正する必要がある
+modeRegister = 0
+
+mode = [(x + basicKey[modeRegister]) % 12 for x in basicKey]
 
 print("mode:    ",mode)
+
+modeC = cycle(mode)
+for _ in range(modeRegister - chordRegister):
+    modeC.next()
+
+print(modeC.list)
