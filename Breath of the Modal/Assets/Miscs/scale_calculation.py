@@ -27,38 +27,49 @@ minorKey = [0, 2, 3, 5, 7, 8, 10]
 
 isTonic = 0
 isRelative = 0
-keyRegister = 6
+keyRegister = 0
 
 basicKey = copy(minorKey) if isTonic > 0 else copy(majorKey)
 
 # ここでキーを作る
 addNum = 9 if isRelative > 0 else 0
-key = [(x + addNum + keyRegister) % 12 for x in basicKey]
-keyC = cycle(key)
+key = [(x + addNum + keyRegister)%12 for x in basicKey]
 
 print("key:     ",key)
 
-chordRegister = 1
-for _ in range(chordRegister):
-    keyC.next()
-keyC.previous()
 
-#chord = [(x + key[chordRegister]) % 12 for x in basicKey]
-chord = [keyC.next() for _ in range(7)]
+# ここでコードを作る
+chordRegister = 1
+chordC = cycle(key)
+
+chordC.previous()
+for _ in range(chordRegister):
+    chordC.next()
+
+chord = [chordC.next() for _ in range(7)]
 
 print("chord:   ",chord)
 
+# ここでモードを作る
+modeRegister = 2
 
-
-# モードが直感に反してるので修正する必要がある
-modeRegister = 0
-
-mode = [(x + basicKey[modeRegister]) % 12 for x in basicKey]
-
-print("mode:    ",mode)
-
-modeC = cycle(mode)
-for _ in range(modeRegister - chordRegister):
+modeC = cycle(chord)
+modeC.previous()
+for _ in range(modeRegister):
     modeC.next()
 
-print(modeC.list)
+mode = [modeC.next() for _ in range(7)]
+mode = [(x - mode[0]) % 12 for x in mode]
+
+print("mode:    ", mode)
+
+for i in range(3):
+    if (chord[i*2+1] - chord[i*2]) != (mode[i*2+1] - mode[i*2]):
+        chord[i*2+1] = chord[i*2+1] - (mode[i*2+1] - mode[i*2])
+
+print("chord:   ", chord)
+
+chord = [x % 12 for x in chord]
+
+chord.sort()
+print(chord)
