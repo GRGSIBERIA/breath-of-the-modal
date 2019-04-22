@@ -76,7 +76,7 @@ public class ModuleIntegrationManager : MonoBehaviour
 
         // コードを決める
         var chordC = new CycleList(key);
-        for (int i = 0; i < keyReg; ++i)
+        for (int i = 0; i < chordReg; ++i)
             chordC.Next();
         chordC.Previous();
 
@@ -86,7 +86,7 @@ public class ModuleIntegrationManager : MonoBehaviour
 
         // モードを決める
         var modeC = new CycleList(chord);
-        for (int i = 0; i < 7; ++i)
+        for (int i = 0; i < modeReg; ++i)
             modeC.Next();
         modeC.Previous();
 
