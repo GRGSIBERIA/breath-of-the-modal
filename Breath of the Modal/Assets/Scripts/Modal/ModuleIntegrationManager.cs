@@ -24,6 +24,9 @@ public class ModuleIntegrationManager : MonoBehaviour
     private ModuleManagerScript octaveManager;
     private ModuleManagerScript modulationManager;
 
+    public GameObject soundManager;
+    private SoundManager sound;
+
     private readonly int[] majorKey = new int[] { 0, 2, 4, 5, 7, 9, 11 };
     private readonly int[] minorKey = new int[] { 0, 2, 3, 5, 7, 8, 10 };
 
@@ -38,7 +41,16 @@ public class ModuleIntegrationManager : MonoBehaviour
         modeManager = modeModule.GetComponent<ModuleManagerScript>();
         octaveManager = octaveModule.GetComponent<ModuleManagerScript>();
         modulationManager = modulationModule.GetComponent<ModuleManagerScript>();
+        sound = soundManager.GetComponent<SoundManager>();
 	}
+
+    void DebugLog(int [] list)
+    {
+        string text = "";
+        foreach (var e in list)
+            text += e.ToString() + "/";
+        Debug.Log(text);
+    }
 
     int GetNote()
     {
@@ -107,6 +119,7 @@ public class ModuleIntegrationManager : MonoBehaviour
             }
         }
 
+        // オクターブで上げる
         int addNote = 12 * octaveReg + concertNote;
         for (int i = 0; i < 7; ++i)
         {
@@ -114,7 +127,7 @@ public class ModuleIntegrationManager : MonoBehaviour
             chord[i] += addNote;
         }
         Array.Sort(chord);
-
+        DebugLog(chord);
         return chord[scaleReg];
     }
 
@@ -122,5 +135,6 @@ public class ModuleIntegrationManager : MonoBehaviour
     void Update ()
     {
         Note = GetNote();
+        sound.SetTone(Note);
 	}
 }

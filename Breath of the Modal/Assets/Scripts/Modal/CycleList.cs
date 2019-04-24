@@ -23,6 +23,8 @@ public class CycleList
     public int Previous()
     {
         index = (index - 1) % list.Length;
+        while (index < 0)
+            index += list.Length;
         return list[index];
     }
 

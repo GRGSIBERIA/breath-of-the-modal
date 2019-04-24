@@ -28,6 +28,5 @@ public class ModuleManagerScript : MonoBehaviour {
             if (switches[i].IsON())
                 Register |= 1 << i;
         }
-        Debug.Log(transform.name + ": " + Register.ToString());
 	}
 }

@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    void SetTone(int n)
+    public void SetTone(int n)
     {
         frequency = 440.0 * Mathf.Pow(2.0f, (n - 69) / 12.0f);
     }

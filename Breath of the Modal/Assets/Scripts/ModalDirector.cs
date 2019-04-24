@@ -7,12 +7,18 @@ public class ModalDirector : MonoBehaviour
     public int nowModal;
     public int numberOfDrawingModalGuideLine;
 
+    public GameObject modeIntegrater;
+
     Material lineMaterial;
+    ModuleIntegrationManager integrater;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+		if (modeIntegrater != null)
+        {
+            integrater = modeIntegrater.GetComponent<ModuleIntegrationManager>();
+        }
 	}
 	
     void DrawLines()
@@ -46,8 +52,8 @@ public class ModalDirector : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        nowModal = integrater.Note;
         transform.rotation = ModalRotation(nowModal);
-
         DrawLines();
 	}
 
