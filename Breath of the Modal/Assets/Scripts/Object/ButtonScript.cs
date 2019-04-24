@@ -13,15 +13,18 @@ public class ButtonScript : SwitchScript
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(code))
-        {
-            material.color = pushColor;
-            isON = true;
-        }
-        else
-        {
-            material.color = defaultColor;
-            isON = false;
-        }
+        HitCheck();
+    }
+
+    protected override void HitCheck()
+    {
+        isON = Input.GetKey(code) || RayCastAll() ? true : false;
+
+        SetMaterialColor();
+    }
+
+    protected override bool TouchHit(Vector2 pos, TouchPhase phase)
+    {
+        return RayCastHit(new Vector3(pos.x, pos.y, 0));
     }
 }

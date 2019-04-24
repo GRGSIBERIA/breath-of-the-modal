@@ -15,10 +15,23 @@ public class ToggleScript : SwitchScript
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(code))
-        {
+        HitCheck();
+    }
+
+    protected override void HitCheck()
+    {
+        if (Input.GetKeyDown(code) || RayCastAll())
             isON = !isON;
-            material.color = isON ? pushColor : defaultColor;
+
+        SetMaterialColor();
+    }
+
+    protected override bool TouchHit(Vector2 pos, TouchPhase phase)
+    {
+        if (RayCastHit(new Vector3(pos.x, pos.y, 0)))
+        {
+            return phase == TouchPhase.Began ? true : false;
         }
+        return false;
     }
 }

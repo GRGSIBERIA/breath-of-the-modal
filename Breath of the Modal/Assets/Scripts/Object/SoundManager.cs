@@ -12,9 +12,13 @@ public class SoundManager : MonoBehaviour
     public double frequency = 440;
     private double phase = 0;
 
+    public GameObject BlowerButton;
+    public ButtonScript Blower { get; private set; }
+
     void Start()
     {
         sampleRate = AudioSettings.outputSampleRate;
+        Blower = BlowerButton.GetComponent<ButtonScript>();
         running = false;
     }
 
@@ -45,5 +49,10 @@ public class SoundManager : MonoBehaviour
     public void SetTone(int n)
     {
         frequency = 440.0 * Mathf.Pow(2.0f, (n - 69) / 12.0f);
+    }
+
+    private void Update()
+    {
+        running = Blower.IsON() ? true : false;
     }
 }
